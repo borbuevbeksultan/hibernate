@@ -1,15 +1,22 @@
 package kg.iceknight.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "superhero")
 public class Superhero {
 
-    private Long id;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @OneToMany(mappedBy = "superhero")
+    private List<Skill> skills;
+
     public Long getId() {
         return id;
     }
@@ -18,36 +25,12 @@ public class Superhero {
         this.id = id;
     }
 
-    @Column
-    private String name;
-
-    @Column
-    private Long age;
-
-    private Long ss;
-
-    public Long getSs() {
-        return ss;
-    }
-
-    public void setSs(Long ss) {
-        this.ss = ss;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getAge() {
-        return age;
-    }
-
-    public void setAge(Long age) {
-        this.age = age;
     }
 
 }

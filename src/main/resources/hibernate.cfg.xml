@@ -4,16 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/supreme</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/marvel</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">postgres</property>
-        <property name="connection.password">******</property>
+        <property name="connection.password">postgres</property>
 
          <!--DB schema will be updated if needed -->
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <property name="show_sql">true</property>
         <mapping class="kg.iceknight.model.Superhero"/>
+        <mapping class="kg.iceknight.model.Skill"/>
     </session-factory>
 
 </hibernate-configuration>
