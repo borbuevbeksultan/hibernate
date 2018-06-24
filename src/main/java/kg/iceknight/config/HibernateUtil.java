@@ -7,11 +7,11 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory ourSessionFactory;
+    private static final SessionFactory sessionFactory;
 
     static {
         try {
-            ourSessionFactory = new Configuration().
+            sessionFactory = new Configuration().
                     configure().
                     buildSessionFactory();
         } catch (Throwable ex) {
@@ -20,11 +20,15 @@ public class HibernateUtil {
     }
 
     public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
+        return sessionFactory.openSession();
+    }
+
+    public static void close() {
+        sessionFactory.close();
     }
 
     public static void test() {
-        ourSessionFactory.close();
+//        sessionFactory.close();
 //        Session session = getSession();
 //        session.close();
 //        final Session session = getSession();
